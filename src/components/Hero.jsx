@@ -10,14 +10,16 @@ const Hero = () => {
 
   return (
     <section ref={ref} id="home" className="relative min-h-screen w-full overflow-hidden bg-gradient-to-b from-emerald-50 via-white to-white">
-      <div className="absolute inset-0">
+      {/* Background 3D scene (kept behind content) */}
+      <div className="absolute inset-0 z-0 pointer-events-none">
         <Spline
           scene="https://prod.spline.design/1o2n-0Lx0gkQ0h5V/scene.splinecode"
           style={{ width: '100%', height: '100%' }}
         />
       </div>
 
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-white/70 via-white/60 to-white/90" />
+      {/* Soft gradient veil above 3D, below content */}
+      <div className="pointer-events-none absolute inset-0 z-[1] bg-gradient-to-b from-white/70 via-white/60 to-white/90" />
 
       <motion.nav
         className="relative z-10 mx-auto flex w-full max-w-7xl items-center justify-between px-6 py-6"
@@ -64,7 +66,7 @@ const Hero = () => {
       </div>
 
       <motion.div
-        className="pointer-events-none absolute bottom-0 left-1/2 h-24 w-[120%] -translate-x-1/2 rounded-t-[50%] bg-white/90 blur-2xl"
+        className="pointer-events-none absolute bottom-0 left-1/2 z-10 h-24 w-[120%] -translate-x-1/2 rounded-t-[50%] bg-white/90 blur-2xl"
         style={{ y: useTransform(scrollYProgress, [0, 1], [0, -80]) }}
       />
     </section>
